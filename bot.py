@@ -24,7 +24,7 @@ intents.members = True
 
 
 
-client = commands.AutoShardedBot (shard_count=3,command_prefix = "&", intents=intents, case_insensitive=True)
+client = commands.AutoShardedBot (shard_count=3,command_prefix ="&", intents=intents, case_insensitive=True)
 
 api_key = "a66b910bd3c8596a07b90052435da25f"
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -80,8 +80,10 @@ async def ping(ctx):
     shard_id = ctx.guild.shard_id
     shard = client.get_shard(shard_id)
     shard_ping = f'{round(shard.latency * 1000)}ms'
+
     await ctx.send(f'Client: `{round(client.latency * 1000)}ms`')
     await ctx.send(f'Shard: `{shard_ping}`')
+   
 
   
 
@@ -97,6 +99,18 @@ async def ping_error(ctx, error):
 async def add(ctx, *,  member:discord.User=None):
     message = ctx.message
     await ctx.send(f"{member} has been added to the list")
+
+
+@client.command()
+@commands.is_owner()
+async def spaceadd(ctx, *,  member:discord.User=None):
+    await ctx.send(f"{member} has been added to `s6823_Guilds:gamma.bloom.host")
+
+
+@client.command()
+@commands.is_owner()
+async def cosmos(ctx):
+    await ctx.send(f"The coding guy that we love!") 
 
 
 
