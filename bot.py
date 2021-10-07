@@ -104,13 +104,13 @@ async def add(ctx, *,  member:discord.User=None):
 @client.command()
 @commands.is_owner()
 async def spaceadd(ctx, *,  member:discord.User=None):
-    await ctx.send(f"{member} has been added to `s6823_Guilds:gamma.bloom.host")
+    await ctx.send(f"{member} has been added to `s6823_Guilds:gamma.bloom.host`")
 
 
 @client.command()
 @commands.is_owner()
 async def cosmos(ctx):
-    await ctx.send(f"The coding guy that we love!") 
+    await ctx.send(f"Our favorite coding guy! <3") 
 
 
 
@@ -417,7 +417,7 @@ async def spieccyy(ctx):
 async def dork(ctx):
  id = str(ctx.author.id)
  if id == '660609569525071883':
-        await ctx.send("❤️ she has the dumpy and she the best and we love her! ❤️ ")
+        await ctx.send("❤️ she is a Valorant god and we love her lots! ❤️ ")
  else:   
          await ctx.send("Only Dork can use that command!")
 
@@ -479,39 +479,16 @@ async def kiss(ctx, member: discord.Member=None):
 
 @client.command(pass_context=True)
 async def hug(ctx, member: discord.Member=None):
-        """hug your senpai/waifu!"""
-        author = ctx.author.mention
-        mention = member.mention
-        
-        hug = "**{0} gave {1} a hug!**"
-        
-        choices = ['https://cdn.discordapp.com/attachments/853098325020377129/869014679282913310/image0.gif',
-         'https://cdn.discordapp.com/attachments/853098325020377129/869014737348862012/image0.gif', 
-         'https://cdn.discordapp.com/attachments/853098325020377129/869014737692786698/image1.gif',
-          'https://cdn.discordapp.com/attachments/853098325020377129/869015026625806376/image0.gif', 
-          'https://cdn.discordapp.com/attachments/853098325020377129/869015456835567626/image0.gif',
-          'https://cdn.discordapp.com/attachments/853098325020377129/869015457183703080/image1.gif',
-          'https://cdn.discordapp.com/attachments/853098325020377129/869016048769327124/image0.gif',
-          'https://media.tenor.com/images/a14af73a96029915cd7b8866bc3be720/tenor.gif',
-          'https://media.tenor.com/images/003a3986b9557cb2a6fee36b54459bb9/tenor.gif',
-          'https://media.tenor.com/images/18c6cbad7022ec9e5cceeaccbf154781/tenor.gif',
-          'https://media.tenor.com/images/cb9bffb9b0e88808fa156f2432233aa7/tenor.gif',
-          'https://tenor.com/view/anime-cheeks-hugs-gif-14106856',
-          'https://tenor.com/view/teria-wang-kishuku-gakkou-no-juliet-hug-anime-gif-16509980',
-          'https://tenor.com/view/anime-hug-gif-13221036',
-          'https://tenor.com/view/hug-anime-clingy-gif-7552075',
-          'https://tenor.com/view/hug-anime-love-sweet-tight-hug-gif-7324587',
-          'https://tenor.com/view/a-whisker-away-hug-love-anime-embrace-gif-17694740',
-          'https://tenor.com/view/anime-hug-manga-cuddle-japan-gif-10522729',
-          'https://tenor.com/view/hug-anime-care-comfort-understanding-gif-15793129',
-          'https://tenor.com/view/hug-anime-gif-11074788']
-        
-        image = random.choice(choices)
-        
-        embed = discord.Embed(description=hug.format(author, mention), colour=discord.Colour.blue())
-        embed.set_image(url=image)
+   async with aiohttp.ClientSession() as session:
+      request = await session.get('https://some-random-api.ml/animu/hug')
+      hugjson = await request.json()
+      author = ctx.author.mention
+      mention = member.mention
 
-        await ctx.send(embed=embed)
+   embed = discord.Embed(title=f"{author} gave {mention} a hug", color=discord.Color.random())
+   embed.set_image(url=hugjson['link'])
+   await ctx.send(embed=embed)
+
 
 @client.command(pass_context=True)
 async def bonk(ctx, member: discord.Member=None):
