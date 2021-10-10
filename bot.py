@@ -443,38 +443,15 @@ async def racc(ctx):
 #-============================ROLEPLAY========
 @client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member=None):
-        """Kiss your senpai/waifu!"""
-       
-        author = ctx.author.mention
-        mention = member.mention
-        
-        kiss = "**{0} gave {1} a kiss!**"
-        
-        choices = ['http://i.imgur.com/0D0Mijk.gif',
-         'https://cdn.discordapp.com/attachments/853098325020377129/869015064458453102/image0.gif',
-          'https://cdn.discordapp.com/attachments/853098325020377129/869015901339545641/image0.gif', 
-          'https://cdn.discordapp.com/attachments/853098325020377129/869016555009228820/image0.gif',
-           'https://cdn.discordapp.com/attachments/853098325020377129/869020081886224424/image0.gif',
-           'https://cdn.discordapp.com/attachments/853098325020377129/869020082242744350/image1.gif',
-           'https://cdn.discordapp.com/attachments/853098325020377129/869020082767036416/image2.gif',
-           'https://cdn.discordapp.com/attachments/853098325020377129/869020083463258142/image3.gif',
-           'https://cdn.discordapp.com/attachments/853098325020377129/869020084004347974/image4.gif',
-           'https://tenor.com/view/anime-kiss-gif-13221050',
-           'https://tenor.com/view/highschool-dxd-asia-issei-kiss-tiptoe-gif-6206552',
-           'https://tenor.com/view/anime-kiss-love-sweet-gif-5095865',
-           'https://tenor.com/view/anime-couple-peck-cute-kiss-gif-12612515',
-           'https://tenor.com/view/anime-zero-kiss-couple-lover-gif-12925177',
-           'https://tenor.com/view/love-anime-kiss-hot-damn-gif-9838409',
-           'https://tenor.com/view/toloveru-unexpected-surprise-kiss-gif-5372258',
-           'https://tenor.com/view/kiss-anime-lovers-romance-gif-14751754',
-           'https://tenor.com/view/eden-of-the-east-akira-takizawa-anime-kiss-blushing-gif-17092948']
-        
-        image = random.choice(choices)
-        
-        embed = discord.Embed(description=kiss.format(author, mention), colour=discord.Colour.blue())
-        embed.set_image(url=image)
+   async with aiohttp.ClientSession() as session:
+      request = await session.get('https://neko-love.xyz/api/v1/kiss')
+      kissjson = await request.json()
+      author = ctx.author.mention
+      mention = member.mention
 
-        await ctx.send(embed=embed)
+   embed = discord.Embed(description=f"{author} gave {mention} a hug", color=discord.Color.random())
+   embed.set_image(url=kissjson['link'])
+   await ctx.send(embed=embed)
 
 
 @client.command(pass_context=True)
@@ -485,7 +462,7 @@ async def hug(ctx, member: discord.Member=None):
       author = ctx.author.mention
       mention = member.mention
 
-   embed = discord.Embed(title=f"{author} gave {mention} a hug", color=discord.Color.random())
+   embed = discord.Embed(description=f"{author} gave {mention} a hug", color=discord.Color.random())
    embed.set_image(url=hugjson['link'])
    await ctx.send(embed=embed)
 
@@ -704,7 +681,7 @@ async def server(ctx):
 
 
 @client.command(aliases=['user'],pass_context=True)
-async def userinfo(ctx, user: discord.Member=None):
+async def userinfo(ctx, user: discord.User = None):
     """Displays user information."""
     if user == None: ##if no user is inputted
         user = ctx.author ##defines user as the author of the message
@@ -722,8 +699,10 @@ async def userinfo(ctx, user: discord.Member=None):
 
 
 
-
-
+@userinfo.error
+async def userinfo_error(ctx: commands.Context, error: commands.CommandError):
+    if isinstance(error, commands.BadArgument):
+        return await ctx.send("Couldn't find that user.")
 
 @client.command(aliases=["shard"], pass_context=True)
 async def shardstats(ctx):
