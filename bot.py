@@ -24,7 +24,7 @@ intents.members = True
 
 
 
-client = commands.AutoShardedBot (shard_count=3,command_prefix ="&", intents=intents, case_insensitive=True)
+client = commands.AutoShardedBot (shard_count=3,command_prefix = "&", intents=intents, case_insensitive=True)
 
 api_key = "a66b910bd3c8596a07b90052435da25f"
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -80,10 +80,8 @@ async def ping(ctx):
     shard_id = ctx.guild.shard_id
     shard = client.get_shard(shard_id)
     shard_ping = f'{round(shard.latency * 1000)}ms'
-
     await ctx.send(f'Client: `{round(client.latency * 1000)}ms`')
     await ctx.send(f'Shard: `{shard_ping}`')
-   
 
   
 
@@ -99,18 +97,6 @@ async def ping_error(ctx, error):
 async def add(ctx, *,  member:discord.User=None):
     message = ctx.message
     await ctx.send(f"{member} has been added to the list")
-
-
-@client.command()
-@commands.is_owner()
-async def spaceadd(ctx, *,  member:discord.User=None):
-    await ctx.send(f"{member} has been added to `s6823_Guilds:gamma.bloom.host`")
-
-
-@client.command()
-@commands.is_owner()
-async def cosmos(ctx):
-    await ctx.send(f"Our favorite coding guy! <3") 
 
 
 
@@ -164,8 +150,9 @@ async def pping(ctx):
 
 @client.command()
 @commands.is_owner() # Checks if the bot owner exectued the command
-async def rr(ctx):
-    await ctx.send("Testing") 
+async def load(ctx):
+    await ctx.send("Loading database stats to DB: s6193_CyberCosmos/gamma.bloom.host:330") 
+    await ctx.send("Data Loaded! :white_check_mark: ")
    
 
 
@@ -417,7 +404,7 @@ async def spieccyy(ctx):
 async def dork(ctx):
  id = str(ctx.author.id)
  if id == '660609569525071883':
-        await ctx.send("❤️ she is a Valorant god and we love her lots! ❤️ ")
+        await ctx.send("❤️ she has the dumpy and she the best and we love her! ❤️ ")
  else:   
          await ctx.send("Only Dork can use that command!")
 
@@ -443,29 +430,75 @@ async def racc(ctx):
 #-============================ROLEPLAY========
 @client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member=None):
-   async with aiohttp.ClientSession() as session:
-      request = await session.get('https://neko-love.xyz/api/v1/kiss')
-      kissjson = await request.json()
-      author = ctx.author.mention
-      mention = member.mention
+        """Kiss your senpai/waifu!"""
+       
+        author = ctx.author.mention
+        mention = member.mention
+        
+        kiss = "**{0} gave {1} a kiss!**"
+        
+        choices = ['http://i.imgur.com/0D0Mijk.gif',
+         'https://cdn.discordapp.com/attachments/853098325020377129/869015064458453102/image0.gif',
+          'https://cdn.discordapp.com/attachments/853098325020377129/869015901339545641/image0.gif', 
+          'https://cdn.discordapp.com/attachments/853098325020377129/869016555009228820/image0.gif',
+           'https://cdn.discordapp.com/attachments/853098325020377129/869020081886224424/image0.gif',
+           'https://cdn.discordapp.com/attachments/853098325020377129/869020082242744350/image1.gif',
+           'https://cdn.discordapp.com/attachments/853098325020377129/869020082767036416/image2.gif',
+           'https://cdn.discordapp.com/attachments/853098325020377129/869020083463258142/image3.gif',
+           'https://cdn.discordapp.com/attachments/853098325020377129/869020084004347974/image4.gif',
+           'https://tenor.com/view/anime-kiss-gif-13221050',
+           'https://tenor.com/view/highschool-dxd-asia-issei-kiss-tiptoe-gif-6206552',
+           'https://tenor.com/view/anime-kiss-love-sweet-gif-5095865',
+           'https://tenor.com/view/anime-couple-peck-cute-kiss-gif-12612515',
+           'https://tenor.com/view/anime-zero-kiss-couple-lover-gif-12925177',
+           'https://tenor.com/view/love-anime-kiss-hot-damn-gif-9838409',
+           'https://tenor.com/view/toloveru-unexpected-surprise-kiss-gif-5372258',
+           'https://tenor.com/view/kiss-anime-lovers-romance-gif-14751754',
+           'https://tenor.com/view/eden-of-the-east-akira-takizawa-anime-kiss-blushing-gif-17092948']
+        
+        image = random.choice(choices)
+        
+        embed = discord.Embed(description=kiss.format(author, mention), colour=discord.Colour.blue())
+        embed.set_image(url=image)
 
-   embed = discord.Embed(description=f"{author} gave {mention} a hug", color=discord.Color.random())
-   embed.set_image(url=kissjson['link'])
-   await ctx.send(embed=embed)
+        await ctx.send(embed=embed)
 
 
 @client.command(pass_context=True)
 async def hug(ctx, member: discord.Member=None):
-   async with aiohttp.ClientSession() as session:
-      request = await session.get('https://some-random-api.ml/animu/hug')
-      hugjson = await request.json()
-      author = ctx.author.mention
-      mention = member.mention
+        """hug your senpai/waifu!"""
+        author = ctx.author.mention
+        mention = member.mention
+        
+        hug = "**{0} gave {1} a hug!**"
+        
+        choices = ['https://cdn.discordapp.com/attachments/853098325020377129/869014679282913310/image0.gif',
+         'https://cdn.discordapp.com/attachments/853098325020377129/869014737348862012/image0.gif', 
+         'https://cdn.discordapp.com/attachments/853098325020377129/869014737692786698/image1.gif',
+          'https://cdn.discordapp.com/attachments/853098325020377129/869015026625806376/image0.gif', 
+          'https://cdn.discordapp.com/attachments/853098325020377129/869015456835567626/image0.gif',
+          'https://cdn.discordapp.com/attachments/853098325020377129/869015457183703080/image1.gif',
+          'https://cdn.discordapp.com/attachments/853098325020377129/869016048769327124/image0.gif',
+          'https://media.tenor.com/images/a14af73a96029915cd7b8866bc3be720/tenor.gif',
+          'https://media.tenor.com/images/003a3986b9557cb2a6fee36b54459bb9/tenor.gif',
+          'https://media.tenor.com/images/18c6cbad7022ec9e5cceeaccbf154781/tenor.gif',
+          'https://media.tenor.com/images/cb9bffb9b0e88808fa156f2432233aa7/tenor.gif',
+          'https://tenor.com/view/anime-cheeks-hugs-gif-14106856',
+          'https://tenor.com/view/teria-wang-kishuku-gakkou-no-juliet-hug-anime-gif-16509980',
+          'https://tenor.com/view/anime-hug-gif-13221036',
+          'https://tenor.com/view/hug-anime-clingy-gif-7552075',
+          'https://tenor.com/view/hug-anime-love-sweet-tight-hug-gif-7324587',
+          'https://tenor.com/view/a-whisker-away-hug-love-anime-embrace-gif-17694740',
+          'https://tenor.com/view/anime-hug-manga-cuddle-japan-gif-10522729',
+          'https://tenor.com/view/hug-anime-care-comfort-understanding-gif-15793129',
+          'https://tenor.com/view/hug-anime-gif-11074788']
+        
+        image = random.choice(choices)
+        
+        embed = discord.Embed(description=hug.format(author, mention), colour=discord.Colour.blue())
+        embed.set_image(url=image)
 
-   embed = discord.Embed(description=f"{author} gave {mention} a hug", color=discord.Color.random())
-   embed.set_image(url=hugjson['link'])
-   await ctx.send(embed=embed)
-
+        await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
 async def bonk(ctx, member: discord.Member=None):
@@ -681,7 +714,7 @@ async def server(ctx):
 
 
 @client.command(aliases=['user'],pass_context=True)
-async def userinfo(ctx, user: discord.User = None):
+async def userinfo(ctx, user: discord.Member=None):
     """Displays user information."""
     if user == None: ##if no user is inputted
         user = ctx.author ##defines user as the author of the message
@@ -699,10 +732,8 @@ async def userinfo(ctx, user: discord.User = None):
 
 
 
-@userinfo.error
-async def userinfo_error(ctx: commands.Context, error: commands.CommandError):
-    if isinstance(error, commands.BadArgument):
-        return await ctx.send("Couldn't find that user.")
+
+
 
 @client.command(aliases=["shard"], pass_context=True)
 async def shardstats(ctx):
