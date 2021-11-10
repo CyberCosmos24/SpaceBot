@@ -2,6 +2,7 @@ import discord
 from discord import shard
 from discord.embeds import Embed
 from discord.ext import commands
+from discord.ext.commands.bot import Bot
 from discord.ext.commands.core import command
 import random
 import json
@@ -49,6 +50,13 @@ async def on_ready():
     print(f'Client = {round(bot.latency * 1000)}ms')
     print(f'All shards are online')
 
+ # this is good but you can make it better
+
+for file in os.listdir("cogs"):
+    if file.endswith(".py"):
+        name = file[:-3]
+        bot.load_extension(f"cogs.{name}")
+
 @bot.event 
 async def on_command_error(ctx, error): 
     if isinstance(error, commands.CommandNotFound): 
@@ -58,21 +66,20 @@ async def on_command_error(ctx, error):
         print(sname)
         print(uuser)
 
-bot.load_extension('cogs.mod')
-bot.load_extension('cogs.fun')
-bot.load_extension('cogs.action')
-bot.load_extension('cogs.owner')
-bot.load_extension('cogs.animal')
-bot.load_extension('cogs.utility')
- # this is good but you can make it better
 
-for filename in os.listdir('./cogs'):
-  if filename.endswith('.py'):
-    bot.load_extension(f'cogs.{filename[:-3]}')
-    
-  else:
-    print(f'Unable to load {filename[:-3]}')
 
+
+@bot.command(aliases = ['l'])
+@commands.is_owner()
+async def load(ctx, extension):
+    bot.load_extension(f'{extension}')
+    await ctx.send(f'Successfully loaded `{extension}`')
+# Unload:
+@bot.command(aliases = ['ul'])
+@commands.is_owner()
+async def unload(ctx, extension):
+    bot.unload_extension(f'{extension}')
+    await ctx.send(f'Successfully unloaded `{extension}`')
 
 
 bot.run('ODQ3NTMyMzY0NjA2MjEwMDk5.YK_cBg.hp4D_YhgvjCAxLrgiEw_B0W7ejQ')
