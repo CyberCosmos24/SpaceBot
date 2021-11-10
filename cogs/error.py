@@ -85,4 +85,4 @@ class Error(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(CommandErrorHandler(bot))
+    bot.add_cog(Error(bot))
