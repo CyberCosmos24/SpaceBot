@@ -1,10 +1,15 @@
 # SpaceBot
+Space was designed for small servers to use
+
+
+#Features 
+-Moderation 
+-Fun 
+-Utility
+-Animal 
+-Action 
 
 
 
-#Meet the team 
-
-Cosmos: Takes care of hosting and programming Space\n
-Hawk: Error handling and finding API's 
 
 
