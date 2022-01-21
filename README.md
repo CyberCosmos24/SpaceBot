@@ -4,6 +4,7 @@
 
 #Meet the team 
 
-Cosmos: Takes care of hosting and is the babysitter for the database 
+Cosmos: Takes care of hosting and programming Space 
+Hawk: Error handling and finding API's 
 
-Hawk: Takes care of error handling and helps Cosmos program the bot 
+
