@@ -9,7 +9,7 @@ Space was designed has a muti feature bot made for small guilds.
 - Animal 
 - Action 
 
-# Information abou the bot 
+# Information about the bot 
 - API Wrapper: `discord.py 2.0.0a`
 - Host: `AWS Lightsail`
 - Database: `bloom.host`
