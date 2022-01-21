@@ -2,7 +2,7 @@
 Space was designed for small servers to use
 
 
-#Features 
+# Features 
 - Moderation 
 - Fun 
 - Utility
