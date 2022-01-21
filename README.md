@@ -3,11 +3,11 @@ Space was designed for small servers to use
 
 
 #Features 
--Moderation 
--Fun 
--Utility
--Animal 
--Action 
+1. -Moderation 
+2. -Fun 
+3. -Utility
+4. -Animal 
+5. -Action 
 
 
 
