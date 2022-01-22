@@ -22,87 +22,88 @@ import psutil
 import asyncio
 intents = discord.Intents.default()  
 intents.members = True             
-bot = commands.AutoShardedBot (shard_count=3,command_prefix ="&", intents=intents, case_insensitive=True)
 
 
-class CustomCog():
+
+class Custom(commands.Cog):
     def __init__(self, bot):
-        self.bot = bot 
+        self.bot = bot
+
+    @commands.command(hidden=True) # Hide custome command 
+    async def meow (self,ctx):
+            id = str(ctx.author.id)
+            if id == '578699592116207629':
+
+                embed = discord.Embed(title="Meow motherfucker :heart:", description="",color=0x0FEBE1)
+                await ctx.send(embed=embed)
+            else:
+                await ctx.send("Only Hide can use that command!")
 
 
+    @commands.command(hidden=True) # Candy custom command
+    async def candy(self,ctx):
+            id = str(ctx.author.id)
+            if id == '424792930461417475':
+                await ctx.send("Candy is a little one! :hearts:  ") 
+            else:
+                
+                    await ctx.send("Only Candy can use that command!")
+
+    @commands.command(hidden=True) # Pongo custom command
+    async def pongo(self,ctx):
+            id = str(ctx.author.id)
+            if id == '376027321154404353':
+                await ctx.send("Nano Swarm Love <3 ") 
+            else:
+                
+                    await ctx.send("Only Pongo can use that command!")
 
 
-@commands.command() # Hide custome command 
-async def meow (ctx):
-    id = str(ctx.author.id)
-    if id == '578699592116207629':
-
-        embed = discord.Embed(title="Meow motherfucker :heart:", description="",color=0x0FEBE1)
-        await ctx.send(embed=embed)
-    else:
-        await ctx.send("Only Hide can use that command!")
+    @commands.command(hidden=True) 
+    async def train(self,ctx):
+            await ctx.send("choo choo :train: :rainbow: :sparkling_heart: ")
 
 
+    @commands.command(hidden=True) # My love custom command 
+    async def gaytorade(self,ctx):
+            id = str(ctx.author.id)
+            if id == '867986155684126750':
+                await ctx.send(":sparkling_heart: Maya :sparkling_heart: ") 
 
-@commands.command() # Candy custom command
-async def candy(ctx):
-    id = str(ctx.author.id)
-    if id == '424792930461417475':
-        await ctx.send("Candy is a little one! :hearts:  ") 
-    else:
-        
-             await ctx.send("Only Candy can use that command!")
+    @commands.command(hidden=True) # Spicyy
+    async def spieccyy(self,ctx):
+            id = str(ctx.author.id)
+            if id == '812528856363696138':
+                await ctx.send("He's Spieccyy")
+            else:   
+                await ctx.send("Only Spiecy can use that command!")
 
-@commands.command() 
-async def train(ctx):
-    await ctx.send("choo choo :train: :rainbow: :sparkling_heart: ")
-
-
-@commands.command() # Soccer Mom custom command 
-async def uglybean(ctx):
-    id = str(ctx.author.id)
-    if id == '867986155684126750':
-        await ctx.send("Thats soccer mom! :soccer: ") 
-
-@commands.command() # Spicyy
-async def spieccyy(ctx):
-    id = str(ctx.author.id)
-    if id == '812528856363696138':
-        await ctx.send("He's Spieccyy")
-
-    else:   
-         await ctx.send("Only Spiecy can use that command!")
-
-@commands.command() # Dumpy 
-async def dork(ctx):
- id = str(ctx.author.id)
- if id == '660609569525071883':
-        await ctx.send("❤️ she is a Valorant god and we love her lots! ❤️ ")
- else:   
-         await ctx.send("Only Dork can use that command!")
+    @commands.command(hidden=True) # Dumpy 
+    async def dork(self,ctx):
+            id = str(ctx.author.id)
+            if id == '660609569525071883':
+                    await ctx.send("❤️ she is a Valorant god and she's hot af! ❤️ ")
+            else:   
+                await ctx.send("Only Dork can use that command!")
 
 
-@commands.command() # Snowy COmmand
-async def snow(ctx):
- id = str(ctx.author.id)
- if id == '269684770680602624':
-        await ctx.send("Snowy is amazing! ❤️ ")
- else:   
-         await ctx.send("Only Snowy can use that command!")
-
-@commands.command()
-async def racc(ctx):
-    id = str(ctx.author.id)
-    if id == '290649060002496512':
-        await ctx.send(f'Thats a dirty raccoon bitch')
-        
-    else:
-        await ctx.send(f" {ctx.message.author} you can not use that command")
-
-
-
+    @commands.command(hidden=True) # Snowy COmmand
+    async def snow(self,ctx):
+            id = str(ctx.author.id)
+            if id == '269684770680602624':
+                    await ctx.send("Snowy is amazing! ❤️ ")
+            else:   
+                await ctx.send("Only Snowy can use that command!")
+    @commands.command()
+    async def paro(self,ctx):
+        id = str(ctx.author.id)
+        if id == '463932071451164673':
+            await ctx.send('paro is the tall and we love him. <3')
+            
+        else:
+            await ctx.send(f" {ctx.message.author} you can not use that command")
 
 
 
 def setup(bot):
-    bot.add_cog(CustomCog(bot))
+    bot.add_cog(Custom(bot))
