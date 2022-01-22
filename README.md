@@ -1,5 +1,5 @@
 # Space
-Space was designed has a muti feature bot made for small guilds. 
+Space is a muti feature bot made for small guilds. 
 
 
 # Features 
