@@ -201,4 +201,4 @@ async def shardstats(ctx):
     embed.add_field(name='Shard Servers:', value=shard_servers)
     await ctx.send(embed=embed)
 
-bot.run('ODQ3NTMyMzY0NjA2MjEwMDk5.YK_cBg.hp4D_YhgvjCAxLrgiEw_B0W7ejQ')
+bot.run('')
