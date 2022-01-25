@@ -13,6 +13,7 @@ Space is a muti feature bot made for small guilds. The global prefix is: `&`
 - API Wrapper: `discord.py 2.0.0a`
 - Host: `AWS Lightsail`
 - Database: `bloom.host`
+- Invite: `https://dsc.gg/space2424`
 
 # Meet the team 
 - Cosmos: `Took care of hosting and a developer`
