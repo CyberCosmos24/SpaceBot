@@ -1,5 +1,5 @@
 # Space
-Space is a muti feature bot made for small guilds. 
+Space is a muti feature bot made for small guilds. The global prefix is: `&`
 
 
 # Features 
