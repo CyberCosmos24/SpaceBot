@@ -1,0 +1,3 @@
+2022-01-27 09:31:29,108:INFO:discord.client: logging in using static token
+2022-01-27 09:31:29,565:INFO:discord.client: Cleaning up tasks.
+2022-01-27 09:31:29,565:INFO:discord.client: Closing the event loop.
