@@ -8,6 +8,7 @@ Space is a muti feature bot made for small guilds. The global prefix is: `&`
 - Utility
 - Animal 
 - Action 
+- Anime SoonTM
 
 # Information about the bot 
 - API Wrapper: `discord.py 2.0.0a`
