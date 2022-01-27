@@ -55,6 +55,7 @@ class Utility(commands.Cog):
     @commands.command(pass_context=True,help="Displays bot information" )
     async def botinfo (self,ctx):
         authors = f'Cosmos#2424'
+        source = f'https://github.com/CyberCosmos24/SpaceBot'
         env_text = f'Language: Python {sys.version.split()[0]}'
         env_text += f'\nLibrary: discord.py {discord.__version__}'
         env_text += f'\nPlatform: {sys.platform.upper()}'
@@ -65,6 +66,7 @@ class Utility(commands.Cog):
         Embed.add_field(name='Authors', value=authors) 
         Embed.add_field(name='Environment', value=env_text)
         Embed.add_field(name='Stats', value=sas_text)
+        Embed.add_field(name='Source', value=source)
         await ctx.send(embed=Embed)
 
 
@@ -100,7 +102,7 @@ class Utility(commands.Cog):
 
     @commands.command(aliases=['user'],pass_context=True,help="Displays user information")
     @commands.guild_only()
-    async def userinfo(self,ctx, user: discord.User = None):
+    async def userinfo(self,ctx, user: discord.Member = None):
      
         if user == None: ##if no user is inputted
             user = ctx.author ##defines user as the author of the message
@@ -122,7 +124,80 @@ class Utility(commands.Cog):
         gname = str(ctx.guild.name)
         await ctx.send(f" {gname} member count is {(ctx.guild.member_count)}")
 
+    @commands.command()
+    async def moderation(self,ctx):
+        embed = discord.Embed(title="Space Moderation Commands", description="",color=0x176cd5)
+        embed.add_field(name="clear", value="`&clear (amount)`",inline=False)
+        embed.add_field(name="lockdown", value="`&lockdown : lockdowns the channel`",inline=False)
+        embed.add_field(name="unlock", value="`&unlock : unlocks the channel`",inline=False)
+        embed.add_field(name="kick", value="`&kick (member) [reason]`",inline=False)
+        embed.add_field(name="ban", value="`&ban (member) [reason]`",inline=False)
+        embed.set_footer(icon_url = f"{ctx.author.avatar.url}", text = f"Requested by {ctx.author}")
+        await ctx.send(embed=embed)
+    
 
+    @commands.command()
+    async def fun (self,ctx):
+        embed = discord.Embed(title="Space Fun Commands", description="",color=0x176cd5) 
+        embed.add_field(name="8ball", value="`&8ball (question)`",inline=False)
+        embed.add_field(name="coinflip", value="`Flips a coin` ",inline=False)
+        embed.add_field(name="poll", value='`&poll <"Question"> <"Answer1"> - <"Answer9"> `',inline=False)
+        embed.add_field(name="joke", value='`Tells a random joke`',inline=False)
+        embed.add_field(name="rps", value='`Play a game of rock ,paper ,scissors `',inline=False)
+        embed.add_field(name="avatar", value='`Sends the user avatar `',inline=False)
+        embed.add_field(name="td", value='`Play truth or dare `',inline=False)
+        embed.add_field(name="weather", value='`&weather [city] `',inline=False)
+        embed.set_footer(icon_url = f"{ctx.author.avatar.url}", text = f"Requested by {ctx.author}")
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
+    async def utility (self,ctx):
+        embed = discord.Embed(title="Utility Commands", description="",color=0x176cd5) 
+        embed.add_field(name="server", value="`Tell information about a server`",inline=False)
+        embed.add_field(name="userinfo", value="`&userinfo (member)`",inline=False)
+        embed.add_field(name="botinfo", value="`Tell information about the bot`",inline=False)
+        embed.add_field(name="status", value="`Gives the status of the bot`",inline=False)
+        embed.set_footer(icon_url = f"{ctx.author.avatar.url}", text = f"Requested by {ctx.author}") 
+        await ctx.send(embed=embed)
+
+    @commands.command()
+    async def animal (self,ctx):
+        embed = discord.Embed(title="Animal Commands", description="",color=0x176cd5) 
+        embed.add_field(name="whale", value="`Shows a picture of a whale` ",inline=False)
+        embed.add_field(name="dog", value="`Shows a picture of a dog`",inline=False)
+        embed.add_field(name="cat ", value="`Shows a picture of a cat`",inline=False)
+        embed.add_field(name="bird ", value="`Shows a picture of a bird`",inline=False)
+        embed.add_field(name="panda", value="`Shows a picture of a panda`",inline=False)
+        embed.add_field(name="fox", value="`Shows a picture of a fox`",inline=False)
+        embed.add_field(name="raccoon", value="`Shows a picture of a raccoon`",inline=False)
+        embed.set_footer(icon_url = f"{ctx.author.avatar.url}", text = f"Requested by {ctx.author}")  
+        await ctx.send(embed=embed)
+    
+    @commands.command()
+    async def action (self,ctx):
+        embed = discord.Embed(title="Action Commands", description="",color=0x176cd5) 
+        embed.add_field(name="hug", value="`Disabled`",inline=False)
+        embed.add_field(name="kiss", value="`Kiss a user`",inline=False)
+        embed.add_field(name="bonk", value="`Bonk a user`",inline=False)
+        embed.add_field(name="pat", value="`Pat a user`",inline=False)
+        embed.set_footer(icon_url = f"{ctx.author.avatar.url}", text = f"Requested by {ctx.author}")
+        await ctx.send(embed=embed)
+
+
+    @commands.command()
+    async def support (self,ctx):
+        embed = discord.Embed(title=" Support Commands", description="",color=0x176cd5)
+        embed.add_field(name="invite", value="`invite the bot`",inline=False)
+        embed.add_field(name="sdiscord", value="`support server`",inline=False)
+        embed.set_footer(icon_url = f"{ctx.author.avata.url}", text = f"Requested by {ctx.author}")
+        await ctx.send(embed=embed)
+        
+    @commands.command()
+    async def sdiscord (self,ctx):
+        embed = discord.Embed(title="Support server", description="",color=0x176cd5) 
+        embed.add_field(name="https://discord.gg/KUybC7tBA2", value="Feel free to join!",inline=False)
+        await ctx.send(embed=embed)
 
 
 
