@@ -102,20 +102,19 @@ class Utility(commands.Cog):
 
     @commands.command(aliases=['user'],pass_context=True,help="Displays user information")
     @commands.guild_only()
-    async def userinfo(self,ctx, user: discord.Member = None):
+    async def userinfo(self,ctx, member: discord.Member = None):
      
-        if user == None: ##if no user is inputted
-            user = ctx.author ##defines user as the author of the message
-        embed = discord.Embed(title="{}'s info".format(user), color=0x176cd5)
-        embed.add_field(name="Username", value=user.name + "#" + user.discriminator, inline=True)
-        embed.add_field(name="ID", value=user.id, inline=True)
-        embed.add_field(name="Highest role", value=user.top_role)
-        embed.add_field(name="Roles", value=len(user.roles))
-        embed.add_field(name="Joined", value=user.joined_at.__format__('%a, %d. %b %Y'))
-        embed.add_field(name="Created", value=user.created_at.__format__('%a, %d. %b %Y'))
-        embed.set_thumbnail(url=user.avatar.url)
+        if member == None: ##if no user is inputted
+            member = ctx.author ##defines user as the author of the message
+        embed = discord.Embed(title="{}'s info".format(member), color=0x176cd5)
+        embed.add_field(name="Username", value=member.name + "#" + member.discriminator, inline=True)
+        embed.add_field(name="ID", value=member.id, inline=True)
+        embed.add_field(name="Joined", value=member.joined_at.__format__('%a, %d. %b %Y'))
+        embed.add_field(name="Created", value=member.created_at.__format__('%a, %d. %b %Y'))
+        embed.set_thumbnail(url=member.avatar.url)
         embed.set_footer(icon_url = f"{ctx.author.avatar.url}", text = f"Requested by {ctx.author}")
         await ctx.send(embed=embed)
+
 
 
     @commands.command(hidden=True,help="Shows the amount of members in the guild")
