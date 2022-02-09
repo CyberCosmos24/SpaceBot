@@ -54,17 +54,14 @@ class Moderation(commands.Cog):
 
     @commands.command(help="Bans a user from the guild") #kick
     @commands.has_permissions(ban_members=True)
-    async def ban (self, ctx, member:discord.User=None, reason =None):
+    async def ban (self, ctx, member:discord.User=None):
         try:
-            if (reason == None):
-                await ctx.channel.send("`You have to specify a reason!`")
-                return
+        
             if (member == ctx.message.author or member == None):
                 await ctx.send("`You cannot ban yourself!`")
-            await ctx.guild.ban(member, reason=reason)
+            await ctx.guild.ban(member)
             print(member)
-            print(reason)
-            await ctx.channel.send(f"{member} has been banned! for {reason}")
+            await ctx.channel.send(f"{member} has been banned!")
         except:
             await ctx.send(f"Error banning user {member}")
 
